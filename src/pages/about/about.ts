@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
+import { GameController } from '../../game/gameController';
 
 @Component({
   selector: 'page-about',
@@ -7,8 +8,21 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,
+              public events: Events,
+              public gameController: GameController) {
 
+                this.items = gameController.items;
+  }
+
+  items = [];
+
+  itemSelected(id: number) {
+    this.events.publish('player:selected', id);
+  }
+
+  addPlayer(name: string) {
+    this.events.publish('player:added', name);
   }
 
 }
