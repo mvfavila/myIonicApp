@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Events } from 'ionic-angular';
 import { PlayerController } from '../../player/playerController';
 
 @IonicPage()
@@ -12,7 +12,8 @@ export class AddChipsModalPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    public playerCtrl: PlayerController) {
+    public playerCtrl: PlayerController,
+    public events: Events) {
       this.loadTableSettings();
   }
 
@@ -54,7 +55,7 @@ export class AddChipsModalPage {
     };
     this.player.buyIns.push(newBuyIn);
     this.closeAddChips();
-    //todo: update player
+    this.updatePlayer();
   }
 
   getBuyInPace(times) {
@@ -66,6 +67,10 @@ export class AddChipsModalPage {
   closeAddChips() {    
     this.addingChips = false;
     this.buyIn = 0;
+  }
+
+  updatePlayer() {
+    this.events.publish('player:updated', this.player);
   }
 
 }

@@ -58,6 +58,9 @@ export class GameController {
                 buyIns: []
             };
             this.items.push(newPlayer);
+        });  
+        events.subscribe('player:updated', (player) => {
+            //todo: save player and reload player's list
         });        
         events.subscribe('player:selected', (id) => {
             var player = this.items.filter(function(item){
