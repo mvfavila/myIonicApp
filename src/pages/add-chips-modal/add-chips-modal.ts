@@ -13,6 +13,7 @@ export class AddChipsModalPage {
     public navParams: NavParams,
     public viewCtrl: ViewController,
     public playerCtrl: PlayerController) {
+      this.loadTableSettings();
   }
 
   player = this.navParams.data;
@@ -21,9 +22,13 @@ export class AddChipsModalPage {
   tableSettings = {
     buyInPace: 10
   };
+  buyIn: 0;
 
   ionViewDidLoad() {
-    console.log(this.player);
+  }
+
+  loadTableSettings() {
+    //todo: load table settings
   }
 
   closeModal() {
@@ -35,13 +40,32 @@ export class AddChipsModalPage {
   }
 
   removePlayer(playerId) {
+    //todo: update player
+  }
 
+  cancelAddChips() {
+    this.closeAddChips();
+  }
+
+  addBuyIn() {
+    var newBuyIn = {
+      amount: this.buyIn,
+      date: Date.now().toString()
+    };
+    this.player.buyIns.push(newBuyIn);
+    this.closeAddChips();
+    //todo: update player
   }
 
   getBuyInPace(times) {
     if(times == null)
       times = 1;
     return this.tableSettings.buyInPace * times;
+  }
+
+  closeAddChips() {    
+    this.addingChips = false;
+    this.buyIn = 0;
   }
 
 }

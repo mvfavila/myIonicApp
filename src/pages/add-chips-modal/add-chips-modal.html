@@ -40,7 +40,7 @@
         Add chips
       </ion-item>
       <ion-item>
-        <ion-input type="number" placeholder="Amout of chips"></ion-input>
+        <ion-input type="number" [(ngModel)]="buyIn" placeholder="Amout of chips"></ion-input>
       </ion-item>
       <ion-item>
         <button ion-button round class="right-color">
@@ -48,6 +48,12 @@
         </button>
         <button ion-button round class="right-color">
           <ion-icon name="add"></ion-icon>{{getBuyInPace(2)}}
+        </button>
+        <button (click)="addBuyIn()" ion-button round outline>
+          Save          
+        </button>
+        <button (click)="cancelAddChips()" ion-button round outline>
+          Cancel          
         </button>
       </ion-item>
     </ion-list>
