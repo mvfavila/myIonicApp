@@ -34,29 +34,24 @@
       </ion-item>
   </ion-list>  
   <ion-grid *ngIf="addingChips">
-    <ion-grid>
-      <ion-row>
-        <ion-col width-25>
-          <ion-row>
-            <button ion-button round class="wrong-color">
-              <ion-icon name="remove"></ion-icon>
-            </button>
-          </ion-row>
-        </ion-col>
-        <ion-col width-50>
-          <ion-item>
-            <ion-input type="number" placeholder="Amout of chips"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col width-25>
-          <ion-row>
-            <button ion-button round class="right-color">
-              <ion-icon name="add"></ion-icon>
-            </button>
-          </ion-row>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+
+    <ion-list>
+      <ion-item>
+        Add chips
+      </ion-item>
+      <ion-item>
+        <ion-input type="number" placeholder="Amout of chips"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button round class="right-color">
+          <ion-icon name="add"></ion-icon>{{getBuyInPace()}}          
+        </button>
+        <button ion-button round class="right-color">
+          <ion-icon name="add"></ion-icon>{{getBuyInPace(2)}}
+        </button>
+      </ion-item>
+    </ion-list>
+
   </ion-grid>
   <ion-grid *ngIf="addingChips == false">
     <ion-row>

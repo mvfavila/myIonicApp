@@ -18,9 +18,11 @@ export class AddChipsModalPage {
   player = this.navParams.data;
   totalBuyIn = this.playerCtrl.getPlayerTotalBuyIn(this.navParams.data);
   addingChips = false;
+  tableSettings = {
+    buyInPace: 10
+  };
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddChipsModalPage');
     console.log(this.player);
   }
 
@@ -30,11 +32,16 @@ export class AddChipsModalPage {
 
   openAddChips() {
     this.addingChips = true;
-    console.log(this.addingChips);
   }
 
   removePlayer(playerId) {
 
+  }
+
+  getBuyInPace(times) {
+    if(times == null)
+      times = 1;
+    return this.tableSettings.buyInPace * times;
   }
 
 }
