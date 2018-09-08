@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, Events } from 'ionic-angular';
 import { PlayerController } from '../../player/playerController';
+import { AboutPage } from '../about/about';
 
 @IonicPage()
 @Component({
@@ -23,14 +24,14 @@ export class AddChipsModalPage {
   tableSettings = {
     buyInPace: 10
   };
-  buyIn: 0;
+  buyIn:number = 0;
 
   ionViewDidLoad() {
   }
 
   loadTableSettings() {
     //todo: load table settings
-  }
+  }  
 
   closeModal() {
     this.viewCtrl.dismiss();
@@ -42,6 +43,7 @@ export class AddChipsModalPage {
 
   removePlayer(playerId) {
     //todo: update player
+
   }
 
   cancelAddChips() {
@@ -54,6 +56,8 @@ export class AddChipsModalPage {
       date: Date.now().toString()
     };
     this.player.buyIns.push(newBuyIn);
+    this.player.buyInCount = this.player.buyInCount + parseFloat(this.buyIn.toString());
+    this.totalBuyIn = this.player.buyInCount;
     this.closeAddChips();
     this.updatePlayer();
   }
@@ -66,7 +70,8 @@ export class AddChipsModalPage {
 
   closeAddChips() {    
     this.addingChips = false;
-    this.buyIn = 0;
+    this.buyIn = null;
+    this.navCtrl.push(AboutPage);
   }
 
   updatePlayer() {

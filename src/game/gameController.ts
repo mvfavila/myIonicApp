@@ -60,7 +60,13 @@ export class GameController {
             this.items.push(newPlayer);
         });  
         events.subscribe('player:updated', (player) => {
-            //todo: save player and reload player's list
+            var index = this.items.indexOf(player);
+            if(index < 0){
+                //TODO: error. Player not found
+            }
+            else{
+                this.items[index] = player;
+            }
         });        
         events.subscribe('player:selected', (id) => {
             var player = this.items.filter(function(item){

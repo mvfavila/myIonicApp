@@ -9,9 +9,9 @@ export class PlayerController {
 
     getPlayerTotalBuyIn(player) {
         console.log(player);
-        var total = 0;
+        var total:number = 0;
         player.buyIns.forEach(element => {
-            total += element.amount;
+            total += parseFloat(element.amount.toString());
         });
         return total;
     }
