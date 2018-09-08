@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Events, AlertController } from 'ionic-angular';
 import { PlayerController } from '../../player/playerController';
 import { AboutPage } from '../about/about';
 
@@ -14,7 +14,8 @@ export class AddChipsModalPage {
     public navParams: NavParams,
     public viewCtrl: ViewController,
     public playerCtrl: PlayerController,
-    public events: Events) {
+    public events: Events,
+    private alertCtrl: AlertController) {
       this.loadTableSettings();
   }
 
@@ -41,9 +42,13 @@ export class AddChipsModalPage {
     this.addingChips = true;
   }
 
-  removePlayer(playerId) {
-    //todo: update player
+  removePlayerClick() {
+    this.presentRemovePlayerPrompt(this.player.nickname);
+  }
 
+  removePlayer(chipsCount){
+    var gameId = 0;
+    this.events.publish('player:removed', this.player, gameId, chipsCount);
   }
 
   cancelAddChips() {
@@ -76,6 +81,36 @@ export class AddChipsModalPage {
 
   updatePlayer() {
     this.events.publish('player:updated', this.player);
+  }
+
+  presentRemovePlayerPrompt(name) {
+    let alert = this.alertCtrl.create({
+      title: 'Remove ' + name,
+      message: 'Inform the player chips count',
+      inputs: [
+        {
+          name: 'chipsCount',
+          placeholder: 'Chips count',
+          type: 'number'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {            
+          }
+        },
+        {
+          text: 'Confirm',
+          handler: data => {
+            this.removePlayer(data.chipsCount);
+            this.navCtrl.push(AboutPage);
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 }

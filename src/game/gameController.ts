@@ -74,6 +74,16 @@ export class GameController {
             })[0];
 
             this.openAddChipsModal(player);
+        });       
+        events.subscribe('player:removed', (player, gameId, chipsCount) => {
+            var index = this.items.indexOf(player);
+            if(index < 0){
+                //TODO: error. Player not found
+            }  
+            else {
+                //TODO: register balance
+                this.items.splice(index, 1);
+            }       
         });
     }
 
