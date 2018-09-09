@@ -8,6 +8,11 @@ import { AddChipsModalPage } from '../pages/add-chips-modal/add-chips-modal';
 export class GameController {
     constructor(public events: Events,
                 public modalCtrl: ModalController) {
+
+        //Historico (with 'teams' and without 'team')
+        //  Repetir ultimo jogo (perguntando quantas fichas colocar para cada jogador)
+        //
+
         this.items = [
             {
                 id: 0,
