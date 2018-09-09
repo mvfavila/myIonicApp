@@ -13,12 +13,20 @@
   <h3>Welcome inside, {{username}}!</h3>
   Your Email is: {{email}}
   <ion-grid>
-    <ion-col>
+    <ion-col width-10></ion-col>
+    <ion-col width-80>
       <ion-item>
-        <button>Quick game</button>
-        <button>Create team</button>
-        <button>Create game</button>
+        <button ion-button block large outline round>
+          <ion-icon name="play" style="padding-right:4px;"></ion-icon>Quick game
+        </button>
+        <button ion-button block large outline round>
+          <ion-icon name="people" style="padding-right:4px;"></ion-icon>Create group
+        </button>
+        <button ion-button block large outline round>
+          <ion-icon name="help-buoy" style="padding-right:4px;"></ion-icon>Create game
+        </button>
       </ion-item>
     </ion-col>
+    <ion-col width-10></ion-col>
   </ion-grid>
 </ion-content>
