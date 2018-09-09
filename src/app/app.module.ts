@@ -17,6 +17,7 @@ import { PlayerController } from '../player/playerController';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { AuthZServiceProvider } from '../providers/auth-z-service/auth-z-service';
 
 /*
 // These are all imports required for Pro Client with Monitoring & Deploy,
@@ -83,7 +84,8 @@ export class MyErrorHandler implements ErrorHandler {
     PlayerController,
     AuthServiceProvider,
 	  //IonicErrorHandler,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}    
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthZServiceProvider    
   ]
 })
 export class AppModule {}

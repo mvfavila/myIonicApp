@@ -13,8 +13,15 @@ export class User {
 }
 
 @Injectable()
-export class AuthServiceProvider {
+export class AuthServiceProvider {  
   currentUser: User;
+  hasTokken:boolean;
+
+  //TODO: delete constructor and search for data
+  public constructor() {
+    this.currentUser = new User('Vinicius', 'vinicius@email.com');
+    this.hasTokken = true;
+  }
 
   public login(credentials) {
     if (credentials.email === null || credentials.password === null) {
@@ -52,6 +59,10 @@ export class AuthServiceProvider {
       observer.next(true);
       observer.complete();
     });
+  }
+
+  isLoggedIn(): boolean {
+    return this.hasTokken;
   }
 
 }

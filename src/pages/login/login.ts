@@ -18,9 +18,11 @@ export class LoginPage {
     private auth: AuthServiceProvider,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController) {
+      if(this.auth.isLoggedIn()){
+        this.nav.push(TabsPage);
+      }
+  }
 
-    }
- 
   public createAccount() {
     this.nav.push(RegisterPage);
   }
