@@ -14,6 +14,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { GameController } from '../game/gameController';
 import { AddChipsModalPage } from '../pages/add-chips-modal/add-chips-modal';
 import { PlayerController } from '../player/playerController';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 
 /*
 // These are all imports required for Pro Client with Monitoring & Deploy,
@@ -54,7 +57,9 @@ export class MyErrorHandler implements ErrorHandler {
     ContactPage,
     HomePage,
     TabsPage,
-    AddChipsModalPage
+    AddChipsModalPage,
+    LoginPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -67,15 +72,18 @@ export class MyErrorHandler implements ErrorHandler {
     ContactPage,
     HomePage,
     TabsPage,
-    AddChipsModalPage
+    AddChipsModalPage,
+    LoginPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     GameController,
     PlayerController,
-	//IonicErrorHandler,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    AuthServiceProvider,
+	  //IonicErrorHandler,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}    
   ]
 })
 export class AppModule {}
