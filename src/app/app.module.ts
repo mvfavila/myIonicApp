@@ -18,6 +18,8 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { AuthZServiceProvider } from '../providers/auth-z-service/auth-z-service';
+import { HttpModule } from '@angular/http';
+import { UserServiceProvider } from '../providers/user-service/user-service';
 
 /*
 // These are all imports required for Pro Client with Monitoring & Deploy,
@@ -64,6 +66,7 @@ export class MyErrorHandler implements ErrorHandler {
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -85,7 +88,8 @@ export class MyErrorHandler implements ErrorHandler {
     AuthServiceProvider,
 	  //IonicErrorHandler,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthZServiceProvider    
+    AuthZServiceProvider,
+    UserServiceProvider
   ]
 })
 export class AppModule {}
