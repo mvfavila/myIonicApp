@@ -15,14 +15,15 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     private auth: AuthServiceProvider) {
     let info = this.auth.getUserInfo();
-    this.username = info['nickName'];
-    this.email = info['email'];
+    this.username = info['_nickName'];
+    this.email = info['_email'];
   }
 
   public logout() {
-    this.auth.logout().subscribe(succ => {
-      this.navCtrl.setRoot(LoginPage)
-    });
+    this.auth.logout()
+    .then(
+      res => this.navCtrl.setRoot(LoginPage)
+    )
   }
 
 }

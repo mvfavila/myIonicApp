@@ -17,9 +17,10 @@ import { PlayerController } from '../player/playerController';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
-import { AuthZServiceProvider } from '../providers/auth-z-service/auth-z-service';
 import { HttpModule } from '@angular/http';
-import { UserServiceProvider } from '../providers/user-service/user-service';
+import { UsersService } from '../user/user-service';
+import { IonicStorageModule } from "@ionic/storage";
+import { ApiService } from '../user/user-api-service';
 
 /*
 // These are all imports required for Pro Client with Monitoring & Deploy,
@@ -53,6 +54,11 @@ export class MyErrorHandler implements ErrorHandler {
   }
 }
 */
+
+export function provideStorage() {
+  return new Storage();
+}
+
 @NgModule({
   declarations: [
     MyApp,
@@ -67,7 +73,8 @@ export class MyErrorHandler implements ErrorHandler {
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -88,8 +95,9 @@ export class MyErrorHandler implements ErrorHandler {
     AuthServiceProvider,
 	  //IonicErrorHandler,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthZServiceProvider,
-    UserServiceProvider
+    {provide: Storage, useFactory: provideStorage},
+    UsersService,
+    ApiService
   ]
 })
 export class AppModule {}
