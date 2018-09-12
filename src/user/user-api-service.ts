@@ -18,14 +18,14 @@ export class ApiService {
      this.getAuthUser()
   }
 
-   private getAuthUser() {
-     this.userService.getOnStorage().then(
-       (user) => {
-         this.user = user;
-       });      
-   }
+  private getAuthUser() {
+    this.userService.getOnStorage().then(
+      (user) => {
+        this.user = user;
+      });      
+  }
 
-   /**
+  /**
    * Get the Json Web Token from the local storage.
    *
    * @returns {RequestOptions}
