@@ -21,6 +21,7 @@ import { HttpModule } from '@angular/http';
 import { UsersService } from '../user/user-service';
 import { IonicStorageModule } from "@ionic/storage";
 import { ApiService } from '../user/user-api-service';
+import { InitLoadPage } from '../pages/init-load/init-load';
 
 /*
 // These are all imports required for Pro Client with Monitoring & Deploy,
@@ -68,7 +69,8 @@ export function provideStorage() {
     TabsPage,
     AddChipsModalPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    InitLoadPage
   ],
   imports: [
     BrowserModule,
@@ -85,7 +87,8 @@ export function provideStorage() {
     TabsPage,
     AddChipsModalPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    InitLoadPage
   ],
   providers: [
     StatusBar,

@@ -56,9 +56,13 @@ export class UsersService {
      */
     getOnStorage(): Promise<AuthenticatedUser> {
       return new Promise((resolve) => {
-        var user = AuthenticatedUser.ParseFromObject(this.storage.get(this.STORAGE_NAME));
-        this.updateUserService(user);
-        resolve(this.storage.get(this.STORAGE_NAME));
+        this.storage.get(this.STORAGE_NAME).then(
+          (user) => {
+            var userObj = AuthenticatedUser.ParseFromObject(user);
+            this.updateUserService(userObj);
+            resolve(userObj);
+          }
+        );
       });
     }
   

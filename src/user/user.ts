@@ -11,14 +11,16 @@ export class AuthenticatedUser {
 
     public static ParseFromObject(object): AuthenticatedUser {
         const model = AuthenticatedUser.GetNewInstance();
-
-        if (object && (object._user || object.user)) {
+        
+        if (object) {
             if(object.user){
                 model.username = object.user.username;
                 model.email = object.user.email;
                 model.token = object.user.token;
             }
             else {
+                object = JSON.parse(object);
+
                 model.username = object._user._username;
                 model.email = object._user._email;
                 model.token = object._user._token;
@@ -37,7 +39,11 @@ export class AuthenticatedUser {
     }
 
     get user(): any {
-        return this._user;
+        return {
+            username: this._user._username,
+            email: this._user._email,
+            token: this._user._token
+        };
     }
 
     get username(): string {

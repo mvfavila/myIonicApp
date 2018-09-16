@@ -3,14 +3,14 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { LoginPage } from '../pages/login/login';
+import { InitLoadPage } from '../pages/init-load/init-load';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage; //TODO: Should be Loading page to decide where to go first (if already logged in or not) 
-
+  rootPage:any = InitLoadPage;
+  
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
