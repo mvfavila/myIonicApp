@@ -21,15 +21,15 @@ export class TabsPage {
   constructor(public actionSheetCtrl: ActionSheetController,
     private userService: UsersService,
     private navCtrl: NavController) {
-    this.getAuthUser();
+      //this.getAuthUser();
   }
 
   private getAuthUser() {
     this.userService.getOnStorage().then(
       (user) => {
-        this.user = user;
+        this.user = AuthenticatedUser.ParseFromObject(user);
 
-        if (!this.user.token) {
+        if (this.user.token == null) {
           this.navCtrl.push(LoginPage)
         }
       }

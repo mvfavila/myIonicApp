@@ -33,7 +33,7 @@ export class UsersService {
      * @param user
      * @returns {Promise<AuthenticatedUser>}
      */
-    createOnStorage(user: AuthenticatedUser): Promise<AuthenticatedUser> {
+    createOnStorage(user: AuthenticatedUser): Promise<AuthenticatedUser> {      
       return new Promise((resolve) => {
         this.getOnStorage().then((res) => {
           if (res) {

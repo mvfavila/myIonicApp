@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ApiService {
 
-  private BASE_URL:string = "http://localhost:8080/";
+  private BASE_URL:string = "http://localhost:3000/";
   private user: AuthenticatedUser;  
 
   /* ---------------------------------------------------------------------------------------------------------------- */

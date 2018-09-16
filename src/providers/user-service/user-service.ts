@@ -9,7 +9,7 @@ export class UserServiceProvider2 {
   data: any;
   
   constructor(public http: Http) {
-    this.baseUrl = 'http://localhost:8080/';
+    this.baseUrl = 'http://localhost:3000/';
     this.data = null;
   }
 

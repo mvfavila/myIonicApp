@@ -12,13 +12,13 @@ import { UsersService } from '../../user/user-service';
 })
 export class LoginPage {
   loading: Loading;
-  registerCredentials = { email: '', password: '' };
+  registerCredentials = { username: '', pass: '' };
   
   constructor(private nav: NavController,
     private auth: AuthServiceProvider,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
-    private userService: UsersService) {
+    private userService: UsersService) {      
   }
 
   public createAccount() {
@@ -26,8 +26,8 @@ export class LoginPage {
   }
  
   public login() {
-    this.showLoading()
-    this.auth.login(this.registerCredentials.email, this.registerCredentials.password).then(
+    this.showLoading();
+    this.auth.login(this.registerCredentials.username, this.registerCredentials.pass).then(
       (user) => {
         this.userService.createOnStorage(user);
         this.nav.setRoot(TabsPage);

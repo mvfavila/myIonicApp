@@ -1,51 +1,66 @@
 export class AuthenticatedUser {
-    private _username: string;
-    private _id: string;
-    private _token: string;
+    private _user: { 
+        _username: string,
+        _email: string,
+        _token: string
+    };
 
     public static GetNewInstance(): AuthenticatedUser {
-        return new AuthenticatedUser(null, null, null)
+        return new AuthenticatedUser(null, null, null);
     }
 
     public static ParseFromObject(object): AuthenticatedUser {
         const model = AuthenticatedUser.GetNewInstance();
 
-        if (object) {
-            model.username = object.username;
-            model.id = object.id;
-            model.token = object.token;
+        if (object && (object._user || object.user)) {
+            if(object.user){
+                model.username = object.user.username;
+                model.email = object.user.email;
+                model.token = object.user.token;
+            }
+            else {
+                model.username = object._user._username;
+                model.email = object._user._email;
+                model.token = object._user._token;
+            }
         }
 
         return model;
     }
 
-    constructor(username: string, id: string, token: string) {
-        this._username = username;
-        this._id = id;
-        this._token = token;
+    constructor(username: string, email: string, token: string) {
+        this._user = { 
+            _username: username,
+            _email: email,
+            _token: token
+        }
+    }
+
+    get user(): any {
+        return this._user;
     }
 
     get username(): string {
-        return this._username;
+        return this._user._username;
     }
 
     set username(value: string) {
-        this._username = value;
+        this._user._username = value;
     }
 
-    get id(): string {
-        return this._id;
+    get email(): string {
+        return this._user._email;
     }
 
-    set id(value: string) {
-        this._id = value;
+    set email(value: string) {
+        this._user._email = value;
     }
 
-    get token(): string {
-        return this._token;
+    get token():string {
+        return this._user._token;
     }
 
     set token(value: string) {
-        this._token = value;
+        this._user._token = value;
     }
 }
