@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Events, ModalController } from 'ionic-angular';
 import { AddChipsModalPage } from '../pages/add-chips-modal/add-chips-modal';
+import { GameServiceProvider } from './game-service';
+import { GameStorage } from './game-storage';
 
-@Component({
-    selector: 'game-controller'
-})
+@Injectable()
 export class GameController {
+
+     public items = [];        
+     private game;
+
     constructor(public events: Events,
-                public modalCtrl: ModalController) {
+                public modalCtrl: ModalController,
+                private gameService: GameServiceProvider,
+                private gameStorage: GameStorage) {
 
         //Historico (with 'teams' and without 'team')
         //  Repetir ultimo jogo (perguntando quantas fichas colocar para cada jogador)
         //
-
+        
         this.items = [
+            /*
             {
                 id: 0,
                 nickname: 'N@nt0',
@@ -52,7 +59,9 @@ export class GameController {
                     }
                 ]
             }
+            */
         ];
+
         events.subscribe('player:added', (name) => {
             var newPlayer = {
                 id: 2,
@@ -97,5 +106,19 @@ export class GameController {
         modal.present();
     }
 
-    items = [];
+    initNewQuickGame() {
+        this.createGame();
+    }
+
+    private createGame() {        
+        this.gameService.create()
+        .then(data => {
+            this.items = data.players;
+            this.game = data;
+            this.gameStorage.createOnStorage(data);
+        })
+        .catch(err => {
+            var msg = err;
+        });
+    }
 }

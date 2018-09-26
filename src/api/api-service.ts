@@ -1,7 +1,7 @@
-import { AuthenticatedUser } from "./user";
+import { AuthenticatedUser } from "../user/user";
 import { Injectable } from "@angular/core";
 import { Http, Headers, RequestOptions, Response } from "@angular/http";
-import { UsersService } from "./user-service";
+import { UsersService } from "../user/user-service";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -77,7 +77,7 @@ export class ApiService {
    * @param body
    * @returns {Observable<>}
    */
-  putRequest(url: string, body: Object, auth: boolean = true): Observable<Object> {
+  public putRequest(url: string, body: Object, auth: boolean = true): Observable<Object> {
     let header = null;
 
     if (auth) {
@@ -101,7 +101,7 @@ export class ApiService {
    * @param body
    * @returns {Observable<>}
    */
-  postRequest(url: string, body: Object, auth: boolean = true): Observable<Object> {
+  public postRequest(url: string, body: Object, auth: boolean = true): Observable<Object> {
     let header = null;
 
     if (auth) {
@@ -123,7 +123,7 @@ export class ApiService {
    * @param auth
    * @returns {Observable<>}
    */
-  headRequest(url: string, auth: boolean = true): Observable<Object> {
+  public headRequest(url: string, auth: boolean = true): Observable<Object> {
     let header = null;
 
     if (auth) {
@@ -145,7 +145,7 @@ export class ApiService {
    * @param auth
    * @returns {Promise<>}
    */
-  getRequest(url: string, auth: boolean = true): Observable<Object> {
+  public getRequest(url: string, auth: boolean = true): Observable<Object> {
     let header = null
 
     if(auth) {
@@ -168,7 +168,7 @@ export class ApiService {
    * @param auth
    * @returns {Observable<>}
    */
-  deleteRequest(url: string, auth: boolean = true): Observable<Object> {
+  public deleteRequest(url: string, auth: boolean = true): Observable<Object> {
     let header = null;
 
     if (auth) {

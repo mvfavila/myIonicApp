@@ -20,8 +20,10 @@ import { RegisterPage } from '../pages/register/register';
 import { HttpModule } from '@angular/http';
 import { UsersService } from '../user/user-service';
 import { IonicStorageModule } from "@ionic/storage";
-import { ApiService } from '../user/user-api-service';
 import { InitLoadPage } from '../pages/init-load/init-load';
+import { ApiService } from '../api/api-service';
+import { GameServiceProvider } from '../game/game-service';
+import { GameStorage } from '../game/game-storage';
 
 /*
 // These are all imports required for Pro Client with Monitoring & Deploy,
@@ -100,7 +102,9 @@ export function provideStorage() {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: Storage, useFactory: provideStorage},
     UsersService,
-    ApiService
+    ApiService,
+    GameServiceProvider,
+    GameStorage
   ]
 })
 export class AppModule {}

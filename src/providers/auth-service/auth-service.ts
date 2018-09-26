@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AuthenticatedUser } from '../../user/user';
-import { ApiService } from '../../user/user-api-service';
+import { ApiService } from '../../api/api-service';
 import { UsersService } from '../../user/user-service';
 
 @Injectable()
