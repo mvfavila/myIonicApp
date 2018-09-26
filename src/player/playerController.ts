@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Events } from 'ionic-angular';
 
-@Component({
-    selector: 'player-controller'
-})
+@Injectable()
 export class PlayerController {
     constructor(public events: Events) {}
 
