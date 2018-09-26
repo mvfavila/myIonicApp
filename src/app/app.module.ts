@@ -24,6 +24,7 @@ import { InitLoadPage } from '../pages/init-load/init-load';
 import { ApiService } from '../api/api-service';
 import { GameServiceProvider } from '../game/game-service';
 import { GameStorage } from '../game/game-storage';
+import { AddPlayerModalPage } from '../pages/add-player-modal/add-player-modal';
 
 /*
 // These are all imports required for Pro Client with Monitoring & Deploy,
@@ -70,6 +71,7 @@ export function provideStorage() {
     HomePage,
     TabsPage,
     AddChipsModalPage,
+    AddPlayerModalPage,
     LoginPage,
     RegisterPage,
     InitLoadPage
@@ -88,6 +90,7 @@ export function provideStorage() {
     HomePage,
     TabsPage,
     AddChipsModalPage,
+    AddPlayerModalPage,
     LoginPage,
     RegisterPage,
     InitLoadPage

@@ -3,6 +3,7 @@ import { Events, ModalController } from 'ionic-angular';
 import { AddChipsModalPage } from '../pages/add-chips-modal/add-chips-modal';
 import { GameServiceProvider } from './game-service';
 import { GameStorage } from './game-storage';
+import { AddPlayerModalPage } from '../pages/add-player-modal/add-player-modal';
 
 @Injectable()
 export class GameController {
@@ -61,7 +62,10 @@ export class GameController {
             }
             */
         ];
-
+               
+        events.subscribe('player:adding', () => {
+            this.openAddPlayerModal();
+        }); 
         events.subscribe('player:added', (name) => {
             var newPlayer = {
                 id: 2,
@@ -103,6 +107,11 @@ export class GameController {
 
     openAddChipsModal(player) {
         const modal = this.modalCtrl.create(AddChipsModalPage, player);
+        modal.present();
+    }
+
+    openAddPlayerModal() {
+        const modal = this.modalCtrl.create(AddPlayerModalPage);
         modal.present();
     }
 

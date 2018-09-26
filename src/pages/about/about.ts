@@ -21,6 +21,10 @@ export class AboutPage {
     this.events.publish('player:selected', id);
   }
 
+  openAddPlayer() {
+    this.events.publish('player:adding');
+  }
+
   addPlayer(name: string) {
     this.events.publish('player:added', name);
   }
