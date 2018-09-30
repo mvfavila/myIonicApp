@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { Player } from '../../player/player';
 
 @IonicPage()
 @Component({
@@ -8,11 +9,44 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AddPlayerModalPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  /*
+    {
+        id: 0,
+        nickname: 'N@nt0',
+        name: 'Sicrano',
+        surname: 'Da Silva',
+        buyInCount: 300,
+        buyIns: [
+            {
+                amount: 100,
+                date: '2018-09-04'
+            },
+            {
+                amount: 200,
+                date: '2018-09-04'
+            }
+        ]              
+    }
+  */
+
+  player:Player;
+
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private viewCtrl: ViewController) {
+      this.player = new Player();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddPlayerModalPage');
+  closeModal() {
+    this.viewCtrl.dismiss();
+  }
+
+  cancelAddPlayer() {
+    this.closeModal();
+  }
+
+  addPlayer() {
+    
   }
 
 }

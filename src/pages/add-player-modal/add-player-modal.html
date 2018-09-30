@@ -1,12 +1,42 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>AddPlayerModal</ion-title>
-  </ion-navbar>
-
+  <ion-toolbar>
+    <ion-title>
+      App Player
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="closeModal()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
+<ion-content>
 
-<ion-content padding>
+  <ion-grid>
+    <ion-list>
+      
+      <ion-item>
+        <ion-input type="string" [(ngModel)]="player.nickname" placeholder="Nickname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="string" [(ngModel)]="player.name" placeholder="Name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="string" [(ngModel)]="player.surname" placeholder="Surname"></ion-input>
+      </ion-item>
 
+      <ion-item>
+        <button (click)="addPlayer()" ion-button round outline>
+          Add          
+        </button>
+        <button (click)="cancelAddPlayer()" ion-button round outline>
+          Cancel          
+        </button>
+      </ion-item>
+
+    </ion-list>
+
+  </ion-grid>
 </ion-content>
