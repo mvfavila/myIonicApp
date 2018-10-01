@@ -61,7 +61,6 @@ export class AddChipsModalPage {
       date: Date.now().toString()
     };
     this.player.buyIns.push(newBuyIn);
-    this.player.buyInCount = this.player.buyInCount + parseFloat(this.buyIn.toString());
     this.totalBuyIn = this.player.buyInCount;
     this.closeAddChips();
     this.updatePlayer();

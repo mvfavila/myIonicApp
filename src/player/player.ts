@@ -7,7 +7,7 @@ export class Player {
         _nickname: string,
         _name: string,
         _surname: string,
-        _buyIns: any[],
+        _buyIns: number[],
         _createdDate: Date,
     };
 
@@ -114,10 +114,10 @@ export class Player {
     }
 
     get buyInCount(): number {
-        var sum = 0;
+        var sum:number = 0;
         this.buyIns.forEach((buyIn) => {
             if(buyIn.amount)
-                sum += buyIn.amount;
+                sum += Number(buyIn.amount);
         });
         return sum;
     }
