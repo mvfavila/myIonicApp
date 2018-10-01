@@ -16,7 +16,7 @@
 
   <ion-grid>
     <ion-list>
-      
+
       <ion-item>
         <ion-input type="string" [(ngModel)]="player.nickname" placeholder="Nickname"></ion-input>
       </ion-item>
@@ -31,7 +31,7 @@
         <button (click)="addPlayer()" ion-button round outline>
           Add          
         </button>
-        <button (click)="cancelAddPlayer()" ion-button round outline>
+        <button (click)="closeModal()" ion-button round outline>
           Cancel          
         </button>
       </ion-item>

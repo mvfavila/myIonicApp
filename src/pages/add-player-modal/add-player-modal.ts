@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Events } from 'ionic-angular';
 import { Player } from '../../player/player';
 
 @IonicPage()
@@ -33,20 +33,22 @@ export class AddPlayerModalPage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    private viewCtrl: ViewController) {
+    private viewCtrl: ViewController,
+    public events: Events) {
       this.player = new Player();
+      // todo: add avatar?
   }
 
   closeModal() {
     this.viewCtrl.dismiss();
   }
 
-  cancelAddPlayer() {
-    this.closeModal();
-  }
-
   addPlayer() {
-    
+    if(!this.player.isValid()){
+
+    }
+    this.events.publish('player:added', this.player);
+    this.closeModal();
   }
 
 }

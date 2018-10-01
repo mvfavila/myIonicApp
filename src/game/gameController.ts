@@ -4,6 +4,7 @@ import { AddChipsModalPage } from '../pages/add-chips-modal/add-chips-modal';
 import { GameServiceProvider } from './game-service';
 import { GameStorage } from './game-storage';
 import { AddPlayerModalPage } from '../pages/add-player-modal/add-player-modal';
+import { Player } from '../player/player';
 
 @Injectable()
 export class GameController {
@@ -20,63 +21,15 @@ export class GameController {
         //  Repetir ultimo jogo (perguntando quantas fichas colocar para cada jogador)
         //
         
-        this.items = [
-            /*
-            {
-                id: 0,
-                nickname: 'N@nt0',
-                name: 'Sicrano',
-                surname: 'Da Silva',
-                buyInCount: 300,
-                buyIns: [
-                    {
-                        amount: 100,
-                        date: '2018-09-04'
-                    },
-                    {
-                        amount: 200,
-                        date: '2018-09-04'
-                    }
-                ]              
-            },
-            {
-                id: 1,
-                nickname: 'T1lt@ndo',
-                name: 'Fulano',
-                surname: 'Da Silva',
-                buyInCount: 50,
-                buyIns: [
-                    {
-                        amount: 10,
-                        date: '2018-09-03'
-                    },
-                    {
-                        amount: 10,
-                        date: '2018-09-04'
-                    },
-                    {
-                        amount: 30,
-                        date: '2018-09-05'
-                    }
-                ]
-            }
-            */
-        ];
+        this.items = [];
                
         events.subscribe('player:adding', () => {
             this.openAddPlayerModal();
-        }); 
-        events.subscribe('player:added', (name) => {
-            var newPlayer = {
-                id: 2,
-                nickname: 'N3wb1',
-                name: 'Joao',
-                surname: 'Grilo',
-                buyInCount: 0,
-                buyIns: []
-            };
-            this.items.push(newPlayer);
-        });  
+        });
+        events.subscribe('player:added', (player:Player) => {
+            // todo: persist information
+            this.items.push(player);
+        });     
         events.subscribe('player:updated', (player) => {
             var index = this.items.indexOf(player);
             if(index < 0){
