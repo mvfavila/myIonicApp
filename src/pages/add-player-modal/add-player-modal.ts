@@ -45,10 +45,12 @@ export class AddPlayerModalPage {
 
   addPlayer() {
     if(!this.player.isValid()){
-
+      // todo: warn user that player is not valid
     }
-    this.events.publish('player:added', this.player);
-    this.closeModal();
+    else {
+      this.events.publish('player:added', this.player);
+      this.closeModal();
+    }
   }
 
 }

@@ -1,9 +1,11 @@
+import { Player } from "../player/player";
+
 export class Game {
     private _game: { 
         _userId: string,
         _createdDate: Date,
         _groupId: string,
-        _players: any[],
+        _players: Player[],
         _admins: any[]
     };
 
@@ -41,7 +43,7 @@ export class Game {
             _userId: userId,
             _createdDate: new Date(),
             _groupId: groupId,
-            _players: new Array(),
+            _players: [],
             _admins: new Array()
         }
     }
@@ -80,11 +82,11 @@ export class Game {
         this._game._groupId = value;
     }
 
-    get players():any[] {
+    get players():Player[] {
         return this._game._players;
     }
 
-    set players(value: any[]) {
+    set players(value: Player[]) {
         this._game._players = value;
     }
 

@@ -70,6 +70,30 @@ export class ApiService {
   /* ---------------------------------------------------------------------------------------------------------------- */
 
   /**
+   * Perform a PATCH request.
+   *
+   * @param url
+   * @param auth
+   * @param body
+   * @returns {Observable<>}
+   */
+  public patchRequest(url: string, body: Object, auth: boolean = true): Observable<Object> {
+    let header = null;
+
+    if (auth) {
+      header = this.formatHeader();
+    }
+    return this.http
+        .patch(this.BASE_URL + url, body, header)
+        .map((response:any) => {
+          return this.handleBody(response);
+        })
+        .catch((err)=>{
+            return this.handleError(err);
+        });
+  }
+
+  /**
    * Perform a PUT request.
    *
    * @param url

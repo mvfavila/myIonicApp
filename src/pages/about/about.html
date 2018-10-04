@@ -8,10 +8,10 @@
 
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemSelected(item.id)">
-      {{ item.name }}
+    <button ion-item *ngFor="let player of players" (click)="itemSelected(player.playerId)">
+      {{ player.nickname }}
       <ion-note item-end>
-        {{item.buyInCount}} <ion-icon name="help-buoy"></ion-icon>
+        {{player.buyInCount}} <ion-icon name="help-buoy"></ion-icon>
       </ion-note>
     </button>  
   </ion-list>
