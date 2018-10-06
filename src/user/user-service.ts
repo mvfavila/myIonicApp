@@ -38,7 +38,8 @@ export class UsersService {
         this.getOnStorage().then((res) => {
           if (res) {
             this.deleteOnStorage().then(() => {
-  
+              this.storage.set(this.STORAGE_NAME, JSON.stringify(user));
+              resolve();
             });
           }
         }).then(() => {

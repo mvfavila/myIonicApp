@@ -6,6 +6,8 @@ import { GameStorage } from './game-storage';
 import { AddPlayerModalPage } from '../pages/add-player-modal/add-player-modal';
 import { Player } from '../player/player';
 import { Game } from './game';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class GameController {
@@ -89,14 +91,12 @@ export class GameController {
     private createGame() {        
         this.gameService.create()
         .then(data => {
-            this._game = Game.ParseFromObject(data);
-            this.gameStorage.createOnStorage(this._game).then(
-
-            );
+            this._game = data;
+            this.gameStorage.createOnStorage(this._game);
         })
         .catch(err => {
             throw new Error("Could not create game. " + err);
-        });
+        }); 
     }
 
     private playerAdded(player: Player): any {
